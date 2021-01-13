@@ -12,14 +12,13 @@ var particle;
 var divisionHeight=300;
 var score =0;
 var turn =0;
+var mous;
 
 function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
   world = engine.world;
   ground = new Ground(width/2,height,width,20);
-
-  particle=new Particle(mouseX,10,10,10);
 
    for (var k = 0; k <=width; k = k + 80) {
      divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
@@ -101,6 +100,10 @@ function draw() {
      
      divisions[k].display();
    }
+
+       if(particle!==null){
+      particle.display();
+    }
   
 }
 
@@ -108,8 +111,6 @@ function mousePressed(){
   if(gameState== "play"){
     
     count++;
-    if(particle!==null){
-      particle.display();
-    }
+ particle=new Particle(mouseX,10,10,10);
   }
 }
